@@ -16,8 +16,7 @@ tab1, tab2, tab3 = st.tabs(["Marco Teórico","Suelo Elástico", "Suelo Rígido"]
 with tab1:
     st.image('esfuerzo-deformacion.png')
     st.write(
-        "La relación esfuerzo-deformación de Kelvin-Voight para un sólido en corte se expresa mediante el modelo mostrado en la figura. " 
-        "La resistencia total a la deformación por corte viene dada por la suma de un componente elástico (resorte) y un componente viscoso (amortiguador)."
+        "La relación esfuerzo-deformación de Kelvin-Voight para un sólido en corte se expresa mediante el modelo mostrado en la figura. La resistencia total a la deformación por corte viene dada por la suma de un componente elástico (resorte) y un componente viscoso (amortiguador)."
     )
     st.latex(r'''
         \tau = G\gamma + \eta\frac{\partial \gamma}{\partial t}
