@@ -151,6 +151,6 @@ with tab3:
     fig2 = px.line(x = f2, y = F2, labels = {'x':'Frequency (Hz)', 'y':'F2(ω)'}, range_x=[0,limit2])
     st.plotly_chart(fig2, use_container_width = True)
 
-    data2 = convert_df(pd.DataFrame({"Frecuencia (Hz)": f2, "|2(w)|": F2}))
+    data2 = convert_df(pd.DataFrame({"Frecuencia (Hz)": f2, "|F2(w)|": F2}))
 
     st.download_button('Descargar CSV', data2, 'Suelo_rigido.csv')
