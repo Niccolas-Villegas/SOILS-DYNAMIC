@@ -84,7 +84,7 @@ with tab2:
     r1, r2, r3, r4 = st.columns([1,2,1,2], gap="medium")
     with r1: "$H (m)$"
     with r2: H1 = st.number_input("H1", value = 25.0, min_value=0.1, label_visibility="collapsed")
-    with r3: "$limit$)"
+    with r3: "$limit$"
     with r4: limit1 = st.number_input("limit1", value = 30.0, min_value=0.0, label_visibility="collapsed")
 
 # Procedimiento para la gráfica de la funcion de transferencia:
@@ -133,7 +133,7 @@ with tab3:
     r1, r2, r3, r4 = st.columns([1,2,1,2], gap="medium")
     with r1: "$H (m)$"
     with r2: H2 = st.number_input("H2", value = 25.0, min_value=0.1, label_visibility="collapsed")
-    with r3: "$limit$)"
+    with r3: "$limit$"
     with r4: limit2 = st.number_input("limit2", value = 30.0, min_value=0.0, label_visibility="collapsed")
 
 # Procedimiento para la gráfica de la funcion de transferencia:
