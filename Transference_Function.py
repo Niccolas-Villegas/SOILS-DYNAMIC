@@ -34,7 +34,7 @@ with tab1:
     with r1: "$H (m)$"
     with r2: H1 = st.number_input("H1", value = 25.0, min_value=0.1, label_visibility="collapsed")
     with r3: "$limit$"
-    with r4: limit1 = st.number_input("limit1", value = 30, min_value=0.0, label_visibility="collapsed")
+    with r4: limit1 = st.number_input("limit1", value = 30.0, min_value=0.0, label_visibility="collapsed")
 
 # Procedimiento para la gráfica de la funcion de transferencia:
     f1 = arange(0, 30, 0.01, dtype=float)
@@ -76,7 +76,7 @@ with tab2:
     with r1: "$H (m)$"
     with r2: H2 = st.number_input("H2", value = 25.0, min_value=0.1, label_visibility="collapsed")
     with r3: "$limit$"
-    with r4: limit2 = st.number_input("limit2", value = 30, min_value=0.0, label_visibility="collapsed")
+    with r4: limit2 = st.number_input("limit2", value = 30.0, min_value=0.0, label_visibility="collapsed")
 
 # Procedimiento para la gráfica de la funcion de transferencia:
     f2 = arange(0, 30, 0.01, dtype=float)
