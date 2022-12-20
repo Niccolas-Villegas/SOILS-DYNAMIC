@@ -2,6 +2,7 @@ from numpy import *
 from math import *
 import streamlit as st
 import plotly.express as px
+import pandas as pd
 
 with st.sidebar:
     st.header("Universidad Nacional de Ingeniería")
@@ -16,7 +17,8 @@ tab1, tab2, tab3 = st.tabs(["Marco Teórico","Suelo Elástico", "Suelo Rígido"]
 with tab1:
     st.image('esfuerzo-deformacion.png')
     st.write(
-        "La relación esfuerzo-deformación de Kelvin-Voight para un sólido en corte se expresa mediante el modelo mostrado en la figura. La resistencia total a la deformación por corte viene dada por la suma de un componente elástico (resorte) y un componente viscoso (amortiguador)."
+        "La relación esfuerzo-deformación de Kelvin-Voight para un sólido en corte se expresa mediante el modelo mostrado en la figura. " 
+        "La resistencia total a la deformación por corte viene dada por la suma de un componente elástico (resorte) y un componente viscoso (amortiguador)."
     )
     st.latex(r'''
         \tau = G\gamma + \eta\frac{\partial \gamma}{\partial t}
@@ -25,13 +27,13 @@ with tab1:
         "La ecuación de movimiento unidimensional para ondas SH que se propagan verticalmente se expresa como:"
     )
     st.latex(r'''
-        \rho \frac{\partial^2 u}{\partial t^2} = G \frac{\partial^2 u}{\partial z^2} + \eta \frac{\partial^3 u}{\partial z^2 \partial t}
+        \rho \frac{\partial^2 u}{\partial t^2} = \frac{\partial \sigma}{\partial z}
     ''')
     st.write(
         "Derivando la ecuación (1) y reemplazando la ecuación (2) considerando que $\sigma=\\tau$ ,$\\gamma=\\frac{\partial u}{\partial z}$, se obtiene lo siguiente:"
     )
     st.latex(r'''
-        \tau = G\gamma + \eta\frac{\partial \gamma}{\partial t}
+        \rho \frac{\partial^2 u}{\partial t^2} = G \frac{\partial^2 u}{\partial z^2} + \eta \frac{\partial^3 u}{\partial z^2 \partial t}
     ''')
     st.write(
         "Para funciones armónicas, los desplazamientos pueden ser escritos como:"
@@ -59,6 +61,8 @@ with tab1:
     ''')
 
 with tab2:
+    #st.write("$F(\\omega) = \\frac{1}{\\sqrt{\cos(\frac{\omega H}{Vs_1})^2 + \sinh(\frac{\omega H}{Vs_1})^2}$")
+
     r1, r2, r3, r4 = st.columns([1,2,1,2], gap="medium")
     with r1: "$V_{s1} (m/s)$"
     with r2: Vs11 = st.number_input("Vs11", value = 145.0,min_value=0.1, label_visibility="collapsed")
@@ -97,8 +101,15 @@ with tab2:
         b = cos(w1[i]*H1/Vs11)**2 + sinh((xi11/100)*w1[i]*H1/Vs11)**2
         F1.append(1/sqrt(alpha*a + b))
     
-    fig1 = px.line(x = f1, y = F1, labels = {'x':'Frequency (Hz)', 'y':'F1(ω)'}, range_x=[0,limit1])
+    fig1 = px.line(x = f1, y = F1, labels = {'x':'Frequencia (Hz)', 'y':'F1(ω)'}, range_x=[0,limit1])
     st.plotly_chart(fig1, use_container_width = True)
+
+    def convert_df(df):
+        return df.to_csv(index = False)
+
+    data1 = convert_df(pd.DataFrame({"Frecuencia (Hz)": f1, "|F1(w)|": F1}))
+
+    st.download_button('Descargar CSV', data1, 'Suelo_rigido.csv')
 
 with tab3:
     r1, r2, r3, r4 = st.columns([1,2,1,2], gap="medium")
@@ -139,3 +150,7 @@ with tab3:
     
     fig2 = px.line(x = f2, y = F2, labels = {'x':'Frequency (Hz)', 'y':'F2(ω)'}, range_x=[0,limit2])
     st.plotly_chart(fig2, use_container_width = True)
+
+    data2 = convert_df(pd.DataFrame({"Frecuencia (Hz)": f2, "|2(w)|": F2}))
+
+    st.download_button('Descargar CSV', data2, 'Suelo_rigido.csv')
