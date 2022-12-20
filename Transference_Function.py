@@ -4,13 +4,14 @@ import streamlit as st
 import plotly.express as px
 
 with st.sidebar:
-    st.header("National University of Civil Engineering")
-    st.subheader("Academic Department of Geothecnical Engineering")
-    st.write("EC514G - Soils Dynamic")
+    st.header("Universidad Nacional de Ingeniería")
+    st.subheader("Facultad de Ingeniería Civil")
+    st.subheader("Departamento Académico de Ingeniería Civil")
+    st.write("EC514G - Dinámica de Suelos")
 
-st.title("Transferences Functions")
+st.title("Funciones de Transferencia")
 
-tab1, tab2, tab3 = st.tabs(["Theory","Elastic Soil", "Rigid Soil"])
+tab1, tab2, tab3 = st.tabs(["Marco Teórico","Suelo Elástico", "Suelo Rígido"])
 
 with tab1:
     st.image('esfuerzo-deformacion.png')
@@ -24,6 +25,9 @@ with tab1:
     st.write(
         "La ecuación de movimiento unidimensional para ondas SH que se propagan verticalmente se expresa como:"
     )
+    st.latex(r'''
+        \rho \frac{\partial^2 u}{\partial t^2} = G \frac{\partial^2 u}{\partial z^2} + \eta \frac{\partial^3 u}{\partial t^2 \partial z}
+    ''')
     st.write(
         "Derivando la ecuación (1) y reemplazando la ecuación (2) considerando que $\sigma=\\tau$ ,$\\gamma=\\frac{\partial u}{\partial z}$, se obtiene lo siguiente:"
     )
