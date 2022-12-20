@@ -1,10 +1,10 @@
 from numpy import *
 from math import *
 import streamlit as st
-import plotly.express as px   
+import plotly.express as px
 
 with st.sidebar:
-    st.header("National University of Engineering")
+    st.header("National University of Civil Engineering")
     st.subheader("Academic Department of Geothecnical Engineering")
     st.write("EC514G - Soils Dynamic")
 
@@ -33,6 +33,8 @@ with tab1:
     r1, r2, r3, r4 = st.columns([1,2,1,2], gap="medium")
     with r1: "$H (m)$"
     with r2: H1 = st.number_input("H1", value = 25.0, min_value=0.1, label_visibility="collapsed")
+    with r3: "$limit$)"
+    with r4: limit1 = st.number_input("limit1", value = 30, min_value=0.0, label_visibility="collapsed")
 
 # Procedimiento para la gráfica de la funcion de transferencia:
     f1 = arange(0, 30, 0.01, dtype=float)
@@ -48,7 +50,7 @@ with tab1:
         b = cos(w1[i]*H1/Vs11)**2 + sinh((xi11/100)*w1[i]*H1/Vs11)**2
         F1.append(1/sqrt(alpha*a + b))
     
-    fig1 = px.line(x = f1, y = F1, labels = {'x':'Frequency (Hz)', 'y':'F1(ω)'}, range_x=[0,30])
+    fig1 = px.line(x = f1, y = F1, labels = {'x':'Frequency (Hz)', 'y':'F1(ω)'}, range_x=[0,limit1])
     st.plotly_chart(fig1, use_container_width = True)
 
 with tab2:
@@ -73,6 +75,8 @@ with tab2:
     r1, r2, r3, r4 = st.columns([1,2,1,2], gap="medium")
     with r1: "$H (m)$"
     with r2: H2 = st.number_input("H2", value = 25.0, min_value=0.1, label_visibility="collapsed")
+    with r3: "$limit$)"
+    with r4: limit2 = st.number_input("limit2", value = 30, min_value=0.0, label_visibility="collapsed")
 
 # Procedimiento para la gráfica de la funcion de transferencia:
     f2 = arange(0, 30, 0.01, dtype=float)
@@ -86,5 +90,5 @@ with tab2:
     for i in range(len(f2)):
         F2.append(1/sqrt(cos(w2[i]*H2/Vs12)**2 + sinh((xi12/100)*w2[i]*H2/Vs12)**2))
     
-    fig2 = px.line(x = f2, y = F2, labels = {'x':'Frequency (Hz)', 'y':'F2(ω)'}, range_x=[0,30])
+    fig2 = px.line(x = f2, y = F2, labels = {'x':'Frequency (Hz)', 'y':'F2(ω)'}, range_x=[0,limit2])
     st.plotly_chart(fig2, use_container_width = True)
