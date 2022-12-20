@@ -26,7 +26,7 @@ with tab1:
         "La ecuación de movimiento unidimensional para ondas SH que se propagan verticalmente se expresa como:"
     )
     st.latex(r'''
-        \rho \frac{\partial^2 u}{\partial t^2} = \frac{\partial \sigma}{\partial z}
+        \rho \frac{\partial^2 u}{\partial t^2} = G \frac{\partial^2 u}{\partial z^2} + \eta \frac{\partial^3 u}{\partial z^2 \partial t}
     ''')
     st.write(
         "Derivando la ecuación (1) y reemplazando la ecuación (2) considerando que $\sigma=\\tau$ ,$\\gamma=\\frac{\partial u}{\partial z}$, se obtiene lo siguiente:"
@@ -46,7 +46,18 @@ with tab1:
     st.latex(r'''
         -\rho \omega^2 U = (G + i \omega \eta) \frac{\partial^2 U}{\partial z^2}
     ''')
-
+    st.write(
+        "Donde $G^*=G + i\\omega\\eta$. La solución de la ecuación diferencial es la siguiente:"
+    )
+    st.latex(r'''
+        u(z,t) = E e^{i(k^*z + \omega t)} + F e^{-i(k^*z - \omega t)}
+    ''')
+    st.write(
+        "Donde:"
+    )
+    st.latex(r'''
+        k^* = \omega \sqrt{\frac{\rho}{G^*}}
+    ''')
 
 with tab2:
     r1, r2, r3, r4 = st.columns([1,2,1,2], gap="medium")
