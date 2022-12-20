@@ -10,7 +10,7 @@ with st.sidebar:
 
 st.title("Transferences Functions")
 
-tab1, tab2 = st.tabs(["Elastic Soil", "Rigid     Soil"])
+tab1, tab2 = st.tabs(["Elastic Soil", "Rigid Soil"])
 with tab1:
     r1, r2, r3, r4 = st.columns([1,2,1,2], gap="medium")
     with r1: "$V_{s1} (m/s)$"
@@ -37,7 +37,7 @@ with tab1:
     with r4: limit1 = st.number_input("limit1", value = 30.0, min_value=0.0, label_visibility="collapsed")
 
 # Procedimiento para la gráfica de la funcion de transferencia:
-    f1 = arange(0, 30, 0.01, dtype=float)
+    f1 = arange(0, limit1, 0.01, dtype=float)
     w1 = []
     F1 = []
 
@@ -79,7 +79,7 @@ with tab2:
     with r4: limit2 = st.number_input("limit2", value = 30.0, min_value=0.0, label_visibility="collapsed")
 
 # Procedimiento para la gráfica de la funcion de transferencia:
-    f2 = arange(0, 30, 0.01, dtype=float)
+    f2 = arange(0, limit2, 0.01, dtype=float)
     w2 = []
     F2 = []
 
