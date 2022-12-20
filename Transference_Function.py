@@ -26,9 +26,9 @@ with tab1:
 
     r1, r2, r3, r4 = st.columns([1,2,1,2], gap="medium")
     with r1: f"$\\xi_1$ (%)"
-    with r2: xi11 = st.number_input("xi11", value = 4.5, min_value=0.1, label_visibility="collapsed")
+    with r2: xi11 = st.number_input("xi11", value = 4.5, min_value=0.0, label_visibility="collapsed")
     with r3: f"$\\xi_2$ (%)"
-    with r4: xi21 = st.number_input("xi21", value = 2.5, min_value=0.1, label_visibility="collapsed")
+    with r4: xi21 = st.number_input("xi21", value = 2.5, min_value=0.0, label_visibility="collapsed")
 
     r1, r2, r3, r4 = st.columns([1,2,1,2], gap="medium")
     with r1: "$H (m)$"
@@ -66,9 +66,9 @@ with tab2:
 
     r1, r2, r3, r4 = st.columns([1,2,1,2], gap="medium")
     with r1: f"$\\xi_1$ (%)"
-    with r2: xi12 = st.number_input("xi12", value = 4.5, min_value=0.1, label_visibility="collapsed")
+    with r2: xi12 = st.number_input("xi12", value = 4.5, min_value=0.0, label_visibility="collapsed")
     with r3: f"$\\xi_2$ (%)"
-    with r4: xi22 = st.number_input("xi22", value = 2.5, min_value=0.1, label_visibility="collapsed")
+    with r4: xi22 = st.number_input("xi22", value = 2.5, min_value=0.0, label_visibility="collapsed")
 
     r1, r2, r3, r4 = st.columns([1,2,1,2], gap="medium")
     with r1: "$H (m)$"
