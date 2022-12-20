@@ -10,8 +10,26 @@ with st.sidebar:
 
 st.title("Transferences Functions")
 
-tab1, tab2 = st.tabs(["Elastic Soil", "Rigid Soil"])
+tab1, tab2, tab3 = st.tabs(["Theory","Elastic Soil", "Rigid Soil"])
+
 with tab1:
+    st.image('esfuerzo-deformacion.png')
+    st.write(
+        "La relación esfuerzo-deformación de Kelvin-Voight para un sólido en corte se expresa mediante el modelo mostrado en la figura. " 
+        "La resistencia total a la deformación por corte viene dada por la suma de un componente elástico (resorte) y un componente viscoso (amortiguador)."
+    )
+    st.latex(r'''
+        \tau = G\gamma + \eta\frac{\partial \gamma}{\partial t}
+    ''')
+    st.write(
+        "La ecuación de movimiento unidimensional para ondas SH que se propagan verticalmente se expresa como:"
+    )
+    st.write(
+        "Derivando la ecuación (1) y reemplazando la ecuación (2) considerando que $\sigma=\\tau$ ,$\\gamma=\\frac{\partial u}{\partial z}$, se obtiene lo siguiente:"
+    )
+
+
+with tab2:
     r1, r2, r3, r4 = st.columns([1,2,1,2], gap="medium")
     with r1: "$V_{s1} (m/s)$"
     with r2: Vs11 = st.number_input("Vs11", value = 145.0,min_value=0.1, label_visibility="collapsed")
@@ -33,7 +51,7 @@ with tab1:
     r1, r2, r3, r4 = st.columns([1,2,1,2], gap="medium")
     with r1: "$H (m)$"
     with r2: H1 = st.number_input("H1", value = 25.0, min_value=0.1, label_visibility="collapsed")
-    with r3: "$limit$"
+    with r3: "$limit$)"
     with r4: limit1 = st.number_input("limit1", value = 30.0, min_value=0.0, label_visibility="collapsed")
 
 # Procedimiento para la gráfica de la funcion de transferencia:
@@ -53,7 +71,7 @@ with tab1:
     fig1 = px.line(x = f1, y = F1, labels = {'x':'Frequency (Hz)', 'y':'F1(ω)'}, range_x=[0,limit1])
     st.plotly_chart(fig1, use_container_width = True)
 
-with tab2:
+with tab3:
     r1, r2, r3, r4 = st.columns([1,2,1,2], gap="medium")
     with r1: "$V_{s1} (m/s)$"
     with r2: Vs12 = st.number_input("Vs12", value = 145.0, min_value=0.1, label_visibility="collapsed")
@@ -75,7 +93,7 @@ with tab2:
     r1, r2, r3, r4 = st.columns([1,2,1,2], gap="medium")
     with r1: "$H (m)$"
     with r2: H2 = st.number_input("H2", value = 25.0, min_value=0.1, label_visibility="collapsed")
-    with r3: "$limit$"
+    with r3: "$limit$)"
     with r4: limit2 = st.number_input("limit2", value = 30.0, min_value=0.0, label_visibility="collapsed")
 
 # Procedimiento para la gráfica de la funcion de transferencia:
