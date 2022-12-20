@@ -4,7 +4,7 @@ import streamlit as st
 import plotly.express as px   
 
 with st.sidebar:
-    st.header("National University of Civil Engineering")
+    st.header("National University of Engineering")
     st.subheader("Academic Department of Geothecnical Engineering")
     st.write("EC514G - Soils Dynamic")
 
