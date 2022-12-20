@@ -109,7 +109,7 @@ with tab2:
 
     data1 = convert_df(pd.DataFrame({"Frecuencia (Hz)": f1, "|F1(w)|": F1}))
 
-    st.download_button('Descargar CSV', data1, 'Suelo_rigido.csv')
+    st.download_button('Descargar CSV', data1, 'Suelo_elastico.csv')
 
 with tab3:
     r1, r2, r3, r4 = st.columns([1,2,1,2], gap="medium")
